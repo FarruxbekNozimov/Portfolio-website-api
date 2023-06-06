@@ -35,7 +35,7 @@ const start = async () => {
         'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.15.5/swagger-ui-standalone-preset.js',
       ],
     });
-    app.use(cookieParser());
+    app.use(cookieParser.default());
 
     app.listen(PORT, () => {
       console.log(`Server ${PORT} da yuguryapti...`);
@@ -46,16 +46,16 @@ const start = async () => {
         'swagger-static',
       );
 
-      // // write swagger json file
-      // const pathToSwaggerJson = resolve(
-      //   pathToSwaggerStaticFolder,
-      //   'swagger.json',
-      // );
-      // const swaggerJson = JSON.stringify(document, null, 2);
-      // writeFileSync(pathToSwaggerJson, swaggerJson);
-      // console.log(
-      //   `Swagger JSON file written to: '/swagger-static/swagger.json'`,
-      // );
+      // write swagger json file
+      const pathToSwaggerJson = resolve(
+        pathToSwaggerStaticFolder,
+        'swagger.json',
+      );
+      const swaggerJson = JSON.stringify(document, null, 2);
+      writeFileSync(pathToSwaggerJson, swaggerJson);
+      console.log(
+        `Swagger JSON file written to: '/swagger-static/swagger.json'`,
+      );
     }
   } catch (error) {
     console.log(error);
