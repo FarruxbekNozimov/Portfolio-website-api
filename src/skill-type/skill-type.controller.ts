@@ -17,7 +17,7 @@ import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { HttpCode } from '@nestjs/common';
 
 @ApiTags('SkillType')
-@Controller('skillType')
+@Controller('skill-type')
 export class SkillTypeController {
   constructor(private readonly skillTypeService: SkillTypeService) {}
 
@@ -49,7 +49,10 @@ export class SkillTypeController {
   @HttpCode(200)
   @ApiOperation({ summary: 'Update skillType by id' })
   @Put(':id')
-  update(@Param('id') id: string, @Body() updateSkillTypeDto: UpdateSkillTypeDto) {
+  update(
+    @Param('id') id: string,
+    @Body() updateSkillTypeDto: UpdateSkillTypeDto,
+  ) {
     return this.skillTypeService.update(id, updateSkillTypeDto);
   }
 

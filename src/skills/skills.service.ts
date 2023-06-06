@@ -18,7 +18,7 @@ export class SkillsService {
   }
 
   async findAll(query: string) {
-    const res = await this.orderModel.find().exec();
+    const res = await this.orderModel.find().populate('skill_type_id');
     return res;
   }
 

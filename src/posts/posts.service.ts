@@ -18,7 +18,7 @@ export class PostsService {
   }
 
   async findAll(query: string) {
-    const res = await this.orderModel.find().exec();
+    const res = await this.orderModel.find();
     return res;
   }
 

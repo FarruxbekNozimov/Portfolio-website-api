@@ -47,9 +47,20 @@ export class CommentsController {
 
   //  @UseGuards(JwtAuthGuard)
   @HttpCode(200)
+  @ApiOperation({ summary: 'Get comments with post id' })
+  @Get('/post/:id')
+  findOneByPostId(@Param('id') id: string) {
+    return this.commentsService.findByPostId(id);
+  }
+
+  //  @UseGuards(JwtAuthGuard)
+  @HttpCode(200)
   @ApiOperation({ summary: 'Update comments by id' })
   @Put(':id')
-  update(@Param('id') id: string, @Body() updateCommentsDto: UpdateCommentsDto) {
+  update(
+    @Param('id') id: string,
+    @Body() updateCommentsDto: UpdateCommentsDto,
+  ) {
     return this.commentsService.update(id, updateCommentsDto);
   }
 
