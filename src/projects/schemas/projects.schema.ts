@@ -6,24 +6,22 @@ export type ProjectsDocument = HydratedDocument<Projects>;
 @Schema({ timestamps: true })
 export class Projects {
   @Prop()
-	title:string;
+  title: string;
 
-	@Prop()
-	preview:string;
+  @Prop()
+  preview: string;
 
-	@Prop()
-	demo:string;
+  @Prop()
+  demo: string;
 
-	@Prop()
-	img:string;
+  @Prop()
+  img: string;
 
-	@Prop()
-	description:string;
+  @Prop()
+  description: string;
 
-	@Prop()
-	tags:string;
-
-	;
+  @Prop()
+  tags: string;
 }
 
 export const ProjectsSchema = SchemaFactory.createForClass(Projects);

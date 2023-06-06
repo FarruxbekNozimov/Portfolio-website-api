@@ -4,6 +4,7 @@ import { UpdateAdminsDto } from './dto/update-admins.dto';
 import { Admins, AdminsDocument } from './schemas/admins.schema';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
+import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class AdminsService {
@@ -13,7 +14,11 @@ export class AdminsService {
   ) {}
 
   async create(createAdminsDto: CreateAdminsDto) {
-    const res = await new this.orderModel(createAdminsDto).save();
+    const password = await bcrypt.hash(createAdminsDto.password, 7);
+    const res = await new this.orderModel({
+      ...createAdminsDto,
+      password,
+    }).save();
     return res;
   }
 

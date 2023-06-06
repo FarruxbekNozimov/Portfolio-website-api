@@ -24,5 +24,5 @@ export class UpdateAdminsDto {
   @ApiProperty({ example: '+998(88)703-80-06' })
   phone_number?: string;
 
-  hashed_token?: string;
+  token?: string;
 }

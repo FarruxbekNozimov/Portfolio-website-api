@@ -14,21 +14,24 @@ import { Response } from 'express';
 import { CookieGetter } from '../decorators/cookieGetter.decorator';
 
 @ApiTags('Authentication')
-@Controller('auth')
+@Controller()
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
-  @ApiOperation({ summary: 'Get User by token' })
+  @ApiOperation({ summary: 'Login Admin' })
   @HttpCode(200)
-  @Post('getuser')
-  getUser(@Body() token: string, @Res({ passthrough: true }) res: Response) {
-    return this.authService.getUser(token, res);
-  }
-
-  @ApiOperation({ summary: 'Login User' })
-  @HttpCode(200)
-  @Post('login')
+  @Post('admins/login')
   login(@Body() loginDto: LoginDto, @Res({ passthrough: true }) res: Response) {
     return this.authService.login(loginDto, res);
+  }
+
+  @ApiOperation({ summary: 'Login Admin' })
+  @HttpCode(200)
+  @Post('users/login')
+  loginUser(
+    @Body() loginDto: LoginDto,
+    @Res({ passthrough: true }) res: Response,
+  ) {
+    return this.authService.loginUser(loginDto, res);
   }
 }
