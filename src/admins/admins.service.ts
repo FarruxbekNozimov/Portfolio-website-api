@@ -26,6 +26,10 @@ export class AdminsService {
     return this.orderModel.findById(id).exec();
   }
 
+  async findOneLogin(username: string) {
+    return this.orderModel.findOne({ username }).exec();
+  }
+
   async update(id: string, updateAdminsDto: UpdateAdminsDto) {
     return this.orderModel
       .findByIdAndUpdate(id, updateAdminsDto, { new: true })

@@ -14,6 +14,7 @@ import { ProjectsModule } from './projects/projects.module';
 import { ReactionsModule } from './reactions/reactions.module';
 import { SkillTypeModule } from './skill-type/skill-type.module';
 import { SocialsModule } from './socials/socials.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -23,6 +24,7 @@ import { SocialsModule } from './socials/socials.module';
     }),
     ConfigModule.forRoot({ envFilePath: '.env', isGlobal: true }),
     MongooseModule.forRoot(process.env.MONGO_URI),
+    AuthModule,
     AdminsModule,
     UsersModule,
     PostsModule,
