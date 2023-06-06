@@ -8,6 +8,8 @@ import { writeFileSync } from 'fs';
 const start = async () => {
   try {
     const app = await NestFactory.create(AppModule);
+    console.log('Starting app');
+
     app.enableCors({
       allowedHeaders: ['content-type'],
       origin: ['http://localhost:5174', 'http://localhost:5173', '*'],
