@@ -29,6 +29,10 @@ export class PostReactionsService {
     return this.orderModel.findById(id).exec();
   }
 
+  async findByPostId(id: string) {
+    return this.orderModel.find({ post_id: id }).exec();
+  }
+
   async update(id: string, updatePostReactionsDto: UpdatePostReactionsDto) {
     return this.orderModel
       .findByIdAndUpdate(id, updatePostReactionsDto, { new: true })

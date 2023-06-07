@@ -12,16 +12,17 @@ import {
 import { UsersService } from './users.service';
 import { CreateUsersDto } from './dto/create-users.dto';
 import { UpdateUsersDto } from './dto/update-users.dto';
-import { ApiOperation, ApiTags } from '@nestjs/swagger';
-// import { JwtAuthGuard } from '../guards/jwt-auth.guards';
+import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
+import { JwtAuthGuard } from '../guards/jwt-auth.guards';
 import { HttpCode } from '@nestjs/common';
 
+@ApiBearerAuth()
 @ApiTags('Users')
 @Controller('users')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
-  //  @UseGuards(JwtAuthGuard)
+  @UseGuards(JwtAuthGuard)
   @HttpCode(200)
   @ApiOperation({ summary: 'Create users' })
   @Post()
@@ -29,7 +30,7 @@ export class UsersController {
     return this.usersService.create(createUsersDto);
   }
 
-  //  @UseGuards(JwtAuthGuard)
+  @UseGuards(JwtAuthGuard)
   @HttpCode(200)
   @ApiOperation({ summary: 'Find all users' })
   @Get()
@@ -37,7 +38,7 @@ export class UsersController {
     return this.usersService.findAll(query);
   }
 
-  //  @UseGuards(JwtAuthGuard)
+  @UseGuards(JwtAuthGuard)
   @HttpCode(200)
   @ApiOperation({ summary: 'Get one users' })
   @Get(':id')
@@ -45,7 +46,7 @@ export class UsersController {
     return this.usersService.findOne(id);
   }
 
-  //  @UseGuards(JwtAuthGuard)
+  @UseGuards(JwtAuthGuard)
   @HttpCode(200)
   @ApiOperation({ summary: 'Update users by id' })
   @Put(':id')
@@ -53,7 +54,7 @@ export class UsersController {
     return this.usersService.update(id, updateUsersDto);
   }
 
-  //  @UseGuards(JwtAuthGuard)
+  @UseGuards(JwtAuthGuard)
   @HttpCode(200)
   @ApiOperation({ summary: 'Delete users by id' })
   @Delete(':id')

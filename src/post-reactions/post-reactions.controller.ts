@@ -42,6 +42,13 @@ export class PostReactionsController {
   }
 
   @HttpCode(200)
+  @ApiOperation({ summary: 'Get one postReactions' })
+  @Get('post/:id')
+  findByPostId(@Param('id') id: string) {
+    return this.postReactionsService.findByPostId(id);
+  }
+
+  @HttpCode(200)
   @ApiOperation({ summary: 'Update postReactions by id' })
   @Put(':id')
   update(

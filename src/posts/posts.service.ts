@@ -17,7 +17,7 @@ export class PostsService {
     return res;
   }
 
-  async findAll(query: string) {
+  async findAll() {
     const res = await this.orderModel.find();
     return res;
   }

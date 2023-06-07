@@ -12,10 +12,11 @@ import {
 import { PostsService } from './posts.service';
 import { CreatePostsDto } from './dto/create-posts.dto';
 import { UpdatePostsDto } from './dto/update-posts.dto';
-import { ApiOperation, ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { HttpCode } from '@nestjs/common';
 import { AdminGuards } from '../guards/admin.guards';
 
+@ApiBearerAuth()
 @ApiTags('Posts')
 @Controller('posts')
 export class PostsController {
@@ -33,8 +34,9 @@ export class PostsController {
   @HttpCode(200)
   @ApiOperation({ summary: 'Find all posts' })
   @Get()
-  findAll(@Query() query: any) {
-    return this.postsService.findAll(query);
+  findAll() {
+    console.log('findall');
+    return this.postsService.findAll();
   }
 
   @UseGuards(AdminGuards)
@@ -42,6 +44,7 @@ export class PostsController {
   @ApiOperation({ summary: 'Get one posts' })
   @Get(':id')
   findOne(@Param('id') id: string) {
+    console.log('findone');
     return this.postsService.findOne(id);
   }
 

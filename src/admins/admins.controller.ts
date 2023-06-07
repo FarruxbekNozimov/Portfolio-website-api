@@ -17,6 +17,7 @@ import { HttpCode } from '@nestjs/common';
 import { ApiBearerAuth } from '@nestjs/swagger';
 import { AdminGuards } from '../guards/admin.guards';
 
+@ApiBearerAuth()
 @ApiTags('Admins')
 @Controller('admins')
 export class AdminsController {
@@ -31,7 +32,6 @@ export class AdminsController {
   }
 
   @UseGuards(AdminGuards)
-  @ApiBearerAuth()
   @HttpCode(200)
   @ApiOperation({ summary: 'Find all admins' })
   @Get()
