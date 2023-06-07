@@ -34,7 +34,7 @@ export class AuthService {
         msg: `Parol yoki Login xato kiritilgan !!!`,
       });
     }
-    const tokens = await this.getToken(admins.id);
+    const tokens = await this.getToken(admins.id, 'ADMIN');
 
     const hashed_refresh_token = await bcrypt.hash(tokens.refresh_token, 7);
     const updatedUser = await this.adminsService.update(admins.id, {
@@ -57,23 +57,23 @@ export class AuthService {
 
   async loginUser(loginDto: LoginDto, res: Response) {
     const { username, password } = loginDto;
-    const admins = await this.usersService.findOneLogin(username);
-    if (!admins) {
+    const users = await this.usersService.findOneLogin(username);
+    if (!users) {
       throw new HttpException(
         { msg: `Bunday foydalanuvchi yo'q !!!` },
         HttpStatus.BAD_REQUEST,
       );
     }
-    const isMatchPass = await bcrypt.compare(password, admins.password);
+    const isMatchPass = await bcrypt.compare(password, users.password);
     if (!isMatchPass) {
       throw new UnauthorizedException({
         msg: `Parol yoki Login xato kiritilgan !!!`,
       });
     }
-    const tokens = await this.getToken(admins.id);
+    const tokens = await this.getToken(users.id, 'USER');
 
     const hashed_refresh_token = await bcrypt.hash(tokens.refresh_token, 7);
-    const updatedUser = await this.usersService.update(admins.id, {
+    const updatedUser = await this.usersService.update(users.id, {
       token: hashed_refresh_token,
     });
 
@@ -91,8 +91,8 @@ export class AuthService {
     return response;
   }
 
-  private async getToken(id: string) {
-    const payload = { id };
+  private async getToken(id: string, role: string) {
+    const payload = { id, role };
     const [accessToken, refreshToken] = await Promise.all([
       this.jwtService.signAsync(payload, {
         secret: process.env.REFRESH_TOKEN_KEY,

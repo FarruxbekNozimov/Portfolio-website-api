@@ -13,15 +13,15 @@ import { ReactionsService } from './reactions.service';
 import { CreateReactionsDto } from './dto/create-reactions.dto';
 import { UpdateReactionsDto } from './dto/update-reactions.dto';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
-// import { JwtAuthGuard } from '../../guards/jwt-auth.guards';
 import { HttpCode } from '@nestjs/common';
+import { AdminGuards } from '../guards/admin.guards';
 
 @ApiTags('Reactions')
 @Controller('reactions')
 export class ReactionsController {
   constructor(private readonly reactionsService: ReactionsService) {}
 
-  //  @UseGuards(JwtAuthGuard)
+  @UseGuards(AdminGuards)
   @HttpCode(200)
   @ApiOperation({ summary: 'Create reactions' })
   @Post()
@@ -29,7 +29,7 @@ export class ReactionsController {
     return this.reactionsService.create(createReactionsDto);
   }
 
-  //  @UseGuards(JwtAuthGuard)
+  @UseGuards(AdminGuards)
   @HttpCode(200)
   @ApiOperation({ summary: 'Find all reactions' })
   @Get()
@@ -37,7 +37,7 @@ export class ReactionsController {
     return this.reactionsService.findAll(query);
   }
 
-  //  @UseGuards(JwtAuthGuard)
+  @UseGuards(AdminGuards)
   @HttpCode(200)
   @ApiOperation({ summary: 'Get one reactions' })
   @Get(':id')
@@ -45,15 +45,18 @@ export class ReactionsController {
     return this.reactionsService.findOne(id);
   }
 
-  //  @UseGuards(JwtAuthGuard)
+  @UseGuards(AdminGuards)
   @HttpCode(200)
   @ApiOperation({ summary: 'Update reactions by id' })
   @Put(':id')
-  update(@Param('id') id: string, @Body() updateReactionsDto: UpdateReactionsDto) {
+  update(
+    @Param('id') id: string,
+    @Body() updateReactionsDto: UpdateReactionsDto,
+  ) {
     return this.reactionsService.update(id, updateReactionsDto);
   }
 
-  //  @UseGuards(JwtAuthGuard)
+  @UseGuards(AdminGuards)
   @HttpCode(200)
   @ApiOperation({ summary: 'Delete reactions by id' })
   @Delete(':id')

@@ -13,15 +13,15 @@ import { SocialsService } from './socials.service';
 import { CreateSocialsDto } from './dto/create-socials.dto';
 import { UpdateSocialsDto } from './dto/update-socials.dto';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
-// import { JwtAuthGuard } from '../../guards/jwt-auth.guards';
 import { HttpCode } from '@nestjs/common';
+import { AdminGuards } from '../guards/admin.guards';
 
 @ApiTags('Socials')
 @Controller('socials')
 export class SocialsController {
   constructor(private readonly socialsService: SocialsService) {}
 
-  //  @UseGuards(JwtAuthGuard)
+  @UseGuards(AdminGuards)
   @HttpCode(200)
   @ApiOperation({ summary: 'Create socials' })
   @Post()
@@ -29,7 +29,7 @@ export class SocialsController {
     return this.socialsService.create(createSocialsDto);
   }
 
-  //  @UseGuards(JwtAuthGuard)
+  @UseGuards(AdminGuards)
   @HttpCode(200)
   @ApiOperation({ summary: 'Find all socials' })
   @Get()
@@ -37,7 +37,7 @@ export class SocialsController {
     return this.socialsService.findAll(query);
   }
 
-  //  @UseGuards(JwtAuthGuard)
+  @UseGuards(AdminGuards)
   @HttpCode(200)
   @ApiOperation({ summary: 'Get one socials' })
   @Get(':id')
@@ -45,7 +45,7 @@ export class SocialsController {
     return this.socialsService.findOne(id);
   }
 
-  //  @UseGuards(JwtAuthGuard)
+  @UseGuards(AdminGuards)
   @HttpCode(200)
   @ApiOperation({ summary: 'Update socials by id' })
   @Put(':id')
@@ -53,7 +53,7 @@ export class SocialsController {
     return this.socialsService.update(id, updateSocialsDto);
   }
 
-  //  @UseGuards(JwtAuthGuard)
+  @UseGuards(AdminGuards)
   @HttpCode(200)
   @ApiOperation({ summary: 'Delete socials by id' })
   @Delete(':id')

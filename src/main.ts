@@ -25,6 +25,7 @@ const start = async () => {
       .setDescription('REST API')
       .setVersion('1.0.0')
       .addTag('NodeJS, NestJS, MongoDB, mongoose')
+      .addBearerAuth()
       .build();
     const document = SwaggerModule.createDocument(app, config);
     SwaggerModule.setup('/api/docs', app, document, {
@@ -35,7 +36,7 @@ const start = async () => {
         'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.15.5/swagger-ui-standalone-preset.js',
       ],
     });
-    app.use(cookieParser.default());
+    app.use(cookieParser());
 
     app.listen(PORT, () => {
       console.log(`Server ${PORT} da yuguryapti...`);

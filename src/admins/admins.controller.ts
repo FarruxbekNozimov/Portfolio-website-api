@@ -13,15 +13,16 @@ import { AdminsService } from './admins.service';
 import { CreateAdminsDto } from './dto/create-admins.dto';
 import { UpdateAdminsDto } from './dto/update-admins.dto';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
-// import { JwtAuthGuard } from '../../guards/jwt-auth.guards';
 import { HttpCode } from '@nestjs/common';
+import { ApiBearerAuth } from '@nestjs/swagger';
+import { AdminGuards } from '../guards/admin.guards';
 
 @ApiTags('Admins')
 @Controller('admins')
 export class AdminsController {
   constructor(private readonly adminsService: AdminsService) {}
 
-  //  @UseGuards(JwtAuthGuard)
+  @UseGuards(AdminGuards)
   @HttpCode(200)
   @ApiOperation({ summary: 'Create admins' })
   @Post()
@@ -29,7 +30,8 @@ export class AdminsController {
     return this.adminsService.create(createAdminsDto);
   }
 
-  //  @UseGuards(JwtAuthGuard)
+  @UseGuards(AdminGuards)
+  @ApiBearerAuth()
   @HttpCode(200)
   @ApiOperation({ summary: 'Find all admins' })
   @Get()
@@ -37,7 +39,7 @@ export class AdminsController {
     return this.adminsService.findAll(query);
   }
 
-  //  @UseGuards(JwtAuthGuard)
+  @UseGuards(AdminGuards)
   @HttpCode(200)
   @ApiOperation({ summary: 'Get one admins' })
   @Get(':id')
@@ -45,7 +47,7 @@ export class AdminsController {
     return this.adminsService.findOne(id);
   }
 
-  //  @UseGuards(JwtAuthGuard)
+  @UseGuards(AdminGuards)
   @HttpCode(200)
   @ApiOperation({ summary: 'Update admins by id' })
   @Put(':id')
@@ -53,7 +55,7 @@ export class AdminsController {
     return this.adminsService.update(id, updateAdminsDto);
   }
 
-  //  @UseGuards(JwtAuthGuard)
+  @UseGuards(AdminGuards)
   @HttpCode(200)
   @ApiOperation({ summary: 'Delete admins by id' })
   @Delete(':id')

@@ -13,7 +13,7 @@ import { UsersService } from './users.service';
 import { CreateUsersDto } from './dto/create-users.dto';
 import { UpdateUsersDto } from './dto/update-users.dto';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
-// import { JwtAuthGuard } from '../../guards/jwt-auth.guards';
+// import { JwtAuthGuard } from '../guards/jwt-auth.guards';
 import { HttpCode } from '@nestjs/common';
 
 @ApiTags('Users')
