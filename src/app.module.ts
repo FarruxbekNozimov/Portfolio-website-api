@@ -4,7 +4,6 @@ import { ConfigModule } from '@nestjs/config';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 import { AdminsModule } from './admins/admins.module';
-import { UsersModule } from './users/users.module';
 import { PostsModule } from './posts/posts.module';
 import { SkillsModule } from './skills/skills.module';
 import { AcademyModule } from './academy/academy.module';
@@ -26,7 +25,6 @@ import { AuthModule } from './auth/auth.module';
     MongooseModule.forRoot(process.env.MONGO_URI),
     AuthModule,
     AdminsModule,
-    UsersModule,
     PostsModule,
     SkillsModule,
     AcademyModule,

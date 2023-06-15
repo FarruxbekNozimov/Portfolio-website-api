@@ -24,14 +24,4 @@ export class AuthController {
   login(@Body() loginDto: LoginDto, @Res({ passthrough: true }) res: Response) {
     return this.authService.login(loginDto, res);
   }
-
-  @ApiOperation({ summary: 'Login Admin' })
-  @HttpCode(200)
-  @Post('users/login')
-  loginUser(
-    @Body() loginDto: LoginDto,
-    @Res({ passthrough: true }) res: Response,
-  ) {
-    return this.authService.loginUser(loginDto, res);
-  }
 }

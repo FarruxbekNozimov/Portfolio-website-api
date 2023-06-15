@@ -151,11 +151,21 @@ function makeFiles(
   }
 }
 
-// ADMINS
-makeFiles('admins', 'Admins', {
+// // ADMINS
+// makeFiles('admins', 'Admins', {
+//   fullname: ['string', ''],
+//   username: ['string', ''],
+//   password: ['string', ''],
+//   user_photo: ['string', ''],
+//   description: ['string', ''],
+//   email: ['string', ''],
+//   phone: ['string', ''],
+//   token: ['string', ''],
+// });
+
+// ABOUT
+makeFiles('about', 'About', {
   fullname: ['string', ''],
-  username: ['string', ''],
-  password: ['string', ''],
   user_photo: ['string', ''],
   description: ['string', ''],
   email: ['string', ''],
@@ -163,88 +173,88 @@ makeFiles('admins', 'Admins', {
   token: ['string', ''],
 });
 
-// USERS
-makeFiles('users', 'Users', {
-  username: ['string', ''],
-  password: ['string', ''],
-  token: ['string', ''],
-});
+// // USERS
+// makeFiles('users', 'Users', {
+//   username: ['string', ''],
+//   password: ['string', ''],
+//   token: ['string', ''],
+// });
 
-// POSTS
-makeFiles('posts', 'Posts', {
-  title: ['string', ''],
-  content: ['string', ''],
-  tags: ['string', ''],
-});
+// // POSTS
+// makeFiles('posts', 'Posts', {
+//   title: ['string', ''],
+//   content: ['string', ''],
+//   tags: ['string', ''],
+// });
 
-// PROJECTS
-makeFiles('projects', 'Projects', {
-  title: ['string', ''],
-  preview: ['string', ''],
-  demo: ['string', ''],
-  img: ['string', ''],
-  description: ['string', ''],
-  tags: ['string', ''],
-});
+// // PROJECTS
+// makeFiles('projects', 'Projects', {
+//   title: ['string', ''],
+//   preview: ['string', ''],
+//   demo: ['string', ''],
+//   img: ['string', ''],
+//   description: ['string', ''],
+//   tags: ['string', ''],
+// });
 
-// SOCIALS
-makeFiles('socials', 'Socials', {
-  name: ['string', ''],
-  link: ['string', ''],
-  icon: ['string', ''],
-});
+// // SOCIALS
+// makeFiles('socials', 'Socials', {
+//   name: ['string', ''],
+//   link: ['string', ''],
+//   icon: ['string', ''],
+// });
 
-// SKILL_TYPE
-makeFiles('skill-type', 'SkillType', {
-  name: ['string', ''],
-});
+// // SKILL_TYPE
+// makeFiles('skill-type', 'SkillType', {
+//   name: ['string', ''],
+// });
 
-// SKILLS
-makeFiles('skills', 'Skills', {
-  title: ['string', ''],
-  icon: ['string', ''],
-  skill_type_id: [
-    'mongoose.Schema.Types.ObjectId',
-    "[{ type: mongoose.Schema.Types.ObjectId, ref:'SkillType'  }]",
-  ],
-  percent: ['string', ''],
-});
+// // SKILLS
+// makeFiles('skills', 'Skills', {
+//   title: ['string', ''],
+//   icon: ['string', ''],
+//   skill_type_id: [
+//     'mongoose.Schema.Types.ObjectId',
+//     "[{ type: mongoose.Schema.Types.ObjectId, ref:'SkillType'  }]",
+//   ],
+//   percent: ['string', ''],
+// });
 
-// ACADEMY
-makeFiles('academy', 'Academy', {
-  name: ['string', ''],
-  time: ['string', ''],
-  description: ['string', ''],
-});
+// // ACADEMY
+// makeFiles('academy', 'Academy', {
+//   name: ['string', ''],
+//   time: ['string', ''],
+//   description: ['string', ''],
+// });
 
-// COMMENTS
-makeFiles('comments', 'Comments', {
-  user_id: [
-    'mongoose.Schema.Types.ObjectId',
-    "[{ type: mongoose.Schema.Types.ObjectId, ref:'Users'  }]",
-  ],
-  time: ['string', ''],
-  content: ['string', ''],
-});
+// // COMMENTS
+// makeFiles('comments', 'Comments', {
+//   user_id: [
+//     'mongoose.Schema.Types.ObjectId',
+//     "[{ type: mongoose.Schema.Types.ObjectId, ref:'Users'  }]",
+//   ],
+//   time: ['string', ''],
+//   content: ['string', ''],
+// });
 
-// REACTIONS
-makeFiles('reactions', 'Reactions', {
-  name: ['string', ''],
-  img: ['string', ''],
-});
+// // REACTIONS
+// makeFiles('reactions', 'Reactions', {
+//   name: ['string', ''],
+//   img: ['string', ''],
+// });
 
-// POST_REACTIONS
-makeFiles('post-reactions', 'PostReactions', {
-  reaction_id: [
-    'mongoose.Schema.Types.ObjectId',
-    "[{ type: mongoose.Schema.Types.ObjectId, ref:'Reactions'  }]",
-  ],
-  post_id: [
-    'mongoose.Schema.Types.ObjectId',
-    "[{ type: mongoose.Schema.Types.ObjectId, ref:'Post'  }]",
-  ],
-  user_id: [
-    'mongoose.Schema.Types.ObjectId',
-    "[{ type: mongoose.Schema.Types.ObjectId, ref:'Users'  }]",
-  ],
-});
+// // POST_REACTIONS
+// makeFiles('post-reactions', 'PostReactions', {
+//   reaction_id: [
+//     'mongoose.Schema.Types.ObjectId',
+//     "[{ type: mongoose.Schema.Types.ObjectId, ref:'Reactions'  }]",
+//   ],
+//   post_id: [
+//     'mongoose.Schema.Types.ObjectId',
+//     "[{ type: mongoose.Schema.Types.ObjectId, ref:'Post'  }]",
+//   ],
+//   user_id: [
+//     'mongoose.Schema.Types.ObjectId',
+//     "[{ type: mongoose.Schema.Types.ObjectId, ref:'Users'  }]",
+//   ],
+// });

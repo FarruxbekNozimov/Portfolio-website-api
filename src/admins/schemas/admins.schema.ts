@@ -15,18 +15,6 @@ export class Admins {
   password: string;
 
   @Prop()
-  user_photo: string;
-
-  @Prop()
-  description: string;
-
-  @Prop()
-  email: string;
-
-  @Prop()
-  phone: string;
-
-  @Prop()
   token: string;
 }
 

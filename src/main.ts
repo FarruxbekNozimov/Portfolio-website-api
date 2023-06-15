@@ -42,7 +42,7 @@ const start = async () => {
         'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.15.5/swagger-ui-standalone-preset.js',
       ],
     });
-    app.use(cookieParser.default());
+    app.use(cookieParser());
 
     app.listen(PORT, () => {
       console.log(`Server ${PORT} da yuguryapti...`);

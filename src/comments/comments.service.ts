@@ -4,6 +4,7 @@ import { UpdateCommentsDto } from './dto/update-comments.dto';
 import { Comments, CommentsDocument } from './schemas/comments.schema';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
+import UserAgent from 'user-agents';
 
 @Injectable()
 export class CommentsService {
@@ -12,12 +13,15 @@ export class CommentsService {
     private orderModel: Model<CommentsDocument>,
   ) {}
 
-  async create(createCommentsDto: CreateCommentsDto) {
+  async create(
+    headers: { 'user-agent': string },
+    createCommentsDto: CreateCommentsDto,
+  ) {
     const res = await new this.orderModel(createCommentsDto).save();
     return res;
   }
 
-  async findAll(query: string) {
+  async findAll(headers: { 'user-agent': string }, query: string) {
     const res = await this.orderModel.find().exec();
     return res;
   }
