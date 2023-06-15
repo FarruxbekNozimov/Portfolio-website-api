@@ -21,7 +21,7 @@ import { AdminGuards } from '../guards/admin.guards';
 export class EducationController {
   constructor(private readonly educationService: EducationService) {}
 
-  @UseGuards(AdminGuards)
+  // @UseGuards(AdminGuards)
   @HttpCode(200)
   @ApiOperation({ summary: 'Create education' })
   @Post()
@@ -29,7 +29,7 @@ export class EducationController {
     return this.educationService.create(createEducationDto);
   }
 
-  @UseGuards(AdminGuards)
+  // @UseGuards(AdminGuards)
   @HttpCode(200)
   @ApiOperation({ summary: 'Find all education' })
   @Get()
@@ -37,7 +37,7 @@ export class EducationController {
     return this.educationService.findAll(query);
   }
 
-  @UseGuards(AdminGuards)
+  // @UseGuards(AdminGuards)
   @HttpCode(200)
   @ApiOperation({ summary: 'Get one education' })
   @Get(':id')
@@ -45,7 +45,7 @@ export class EducationController {
     return this.educationService.findOne(id);
   }
 
-  @UseGuards(AdminGuards)
+  // @UseGuards(AdminGuards)
   @HttpCode(200)
   @ApiOperation({ summary: 'Update education by id' })
   @Put(':id')
@@ -56,7 +56,7 @@ export class EducationController {
     return this.educationService.update(id, updateEducationDto);
   }
 
-  @UseGuards(AdminGuards)
+  // @UseGuards(AdminGuards)
   @HttpCode(200)
   @ApiOperation({ summary: 'Delete education by id' })
   @Delete(':id')

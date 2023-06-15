@@ -21,7 +21,7 @@ import { AdminGuards } from '../guards/admin.guards';
 export class ReactionsController {
   constructor(private readonly reactionsService: ReactionsService) {}
 
-  @UseGuards(AdminGuards)
+  // @UseGuards(AdminGuards)
   @HttpCode(200)
   @ApiOperation({ summary: 'Create reactions' })
   @Post()
@@ -29,7 +29,7 @@ export class ReactionsController {
     return this.reactionsService.create(createReactionsDto);
   }
 
-  @UseGuards(AdminGuards)
+  // @UseGuards(AdminGuards)
   @HttpCode(200)
   @ApiOperation({ summary: 'Find all reactions' })
   @Get()
@@ -37,7 +37,7 @@ export class ReactionsController {
     return this.reactionsService.findAll(query);
   }
 
-  @UseGuards(AdminGuards)
+  // @UseGuards(AdminGuards)
   @HttpCode(200)
   @ApiOperation({ summary: 'Get one reactions' })
   @Get(':id')
@@ -45,7 +45,7 @@ export class ReactionsController {
     return this.reactionsService.findOne(id);
   }
 
-  @UseGuards(AdminGuards)
+  // @UseGuards(AdminGuards)
   @HttpCode(200)
   @ApiOperation({ summary: 'Update reactions by id' })
   @Put(':id')
@@ -56,7 +56,7 @@ export class ReactionsController {
     return this.reactionsService.update(id, updateReactionsDto);
   }
 
-  @UseGuards(AdminGuards)
+  // @UseGuards(AdminGuards)
   @HttpCode(200)
   @ApiOperation({ summary: 'Delete reactions by id' })
   @Delete(':id')

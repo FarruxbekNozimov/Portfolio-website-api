@@ -6,7 +6,7 @@ import {
   Put,
   Param,
   Delete,
-  UseGuards,
+  // UseGuards,
   Query,
 } from '@nestjs/common';
 import { AboutService } from './about.service';
@@ -21,7 +21,7 @@ import { HttpCode } from '@nestjs/common';
 export class AboutController {
   constructor(private readonly aboutService: AboutService) {}
 
-  //  @UseGuards(JwtAuthGuard)
+  // UseGuards(JwtAuthGuard);
   @HttpCode(200)
   @ApiOperation({ summary: 'Create about' })
   @Post()
@@ -29,7 +29,7 @@ export class AboutController {
     return this.aboutService.create(createAboutDto);
   }
 
-  //  @UseGuards(JwtAuthGuard)
+  // UseGuards(JwtAuthGuard);
   @HttpCode(200)
   @ApiOperation({ summary: 'Find all about' })
   @Get()
@@ -37,7 +37,7 @@ export class AboutController {
     return this.aboutService.findAll(query);
   }
 
-  //  @UseGuards(JwtAuthGuard)
+  // UseGuards(JwtAuthGuard);
   @HttpCode(200)
   @ApiOperation({ summary: 'Get one about' })
   @Get(':id')
@@ -45,7 +45,7 @@ export class AboutController {
     return this.aboutService.findOne(id);
   }
 
-  //  @UseGuards(JwtAuthGuard)
+  // UseGuards(JwtAuthGuard);
   @HttpCode(200)
   @ApiOperation({ summary: 'Update about by id' })
   @Put(':id')
@@ -53,7 +53,7 @@ export class AboutController {
     return this.aboutService.update(id, updateAboutDto);
   }
 
-  //  @UseGuards(JwtAuthGuard)
+  // UseGuards(JwtAuthGuard);
   @HttpCode(200)
   @ApiOperation({ summary: 'Delete about by id' })
   @Delete(':id')

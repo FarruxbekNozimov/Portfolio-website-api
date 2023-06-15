@@ -16,5 +16,8 @@ export class CreateAboutDto {
   description: string;
 
   @ApiProperty({ example: '+998(88)703-80-06' })
-  phone_number: string;
+  phone: string;
+
+  @ApiProperty({ example: 'farruxbekyusupov@gmail.com' })
+  email: string;
 }

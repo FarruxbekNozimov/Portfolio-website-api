@@ -21,7 +21,7 @@ import { AdminGuards } from '../guards/admin.guards';
 export class SkillsController {
   constructor(private readonly skillsService: SkillsService) {}
 
-  @UseGuards(AdminGuards)
+  // @UseGuards(AdminGuards)
   @HttpCode(200)
   @ApiOperation({ summary: 'Create skills' })
   @Post()
@@ -29,7 +29,7 @@ export class SkillsController {
     return this.skillsService.create(createSkillsDto);
   }
 
-  @UseGuards(AdminGuards)
+  // @UseGuards(AdminGuards)
   @HttpCode(200)
   @ApiOperation({ summary: 'Find all skills' })
   @Get()
@@ -37,7 +37,7 @@ export class SkillsController {
     return this.skillsService.findAll(query);
   }
 
-  @UseGuards(AdminGuards)
+  // @UseGuards(AdminGuards)
   @HttpCode(200)
   @ApiOperation({ summary: 'Get one skills' })
   @Get(':id')
@@ -45,7 +45,7 @@ export class SkillsController {
     return this.skillsService.findOne(id);
   }
 
-  @UseGuards(AdminGuards)
+  // @UseGuards(AdminGuards)
   @HttpCode(200)
   @ApiOperation({ summary: 'Update skills by id' })
   @Put(':id')
@@ -53,7 +53,7 @@ export class SkillsController {
     return this.skillsService.update(id, updateSkillsDto);
   }
 
-  @UseGuards(AdminGuards)
+  // @UseGuards(AdminGuards)
   @HttpCode(200)
   @ApiOperation({ summary: 'Delete skills by id' })
   @Delete(':id')

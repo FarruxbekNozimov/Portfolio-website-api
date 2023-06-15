@@ -23,7 +23,7 @@ import { AdminGuards } from '../guards/admin.guards';
 export class AdminsController {
   constructor(private readonly adminsService: AdminsService) {}
 
-  @UseGuards(AdminGuards)
+  // @UseGuards(AdminGuards)
   @HttpCode(200)
   @ApiOperation({ summary: 'Create admins' })
   @Post()
@@ -31,7 +31,7 @@ export class AdminsController {
     return this.adminsService.create(createAdminsDto);
   }
 
-  @UseGuards(AdminGuards)
+  // @UseGuards(AdminGuards)
   @HttpCode(200)
   @ApiOperation({ summary: 'Find all admins' })
   @Get()
@@ -39,7 +39,7 @@ export class AdminsController {
     return this.adminsService.findAll(query);
   }
 
-  @UseGuards(AdminGuards)
+  // @UseGuards(AdminGuards)
   @HttpCode(200)
   @ApiOperation({ summary: 'Get one admins' })
   @Get(':id')
@@ -47,7 +47,7 @@ export class AdminsController {
     return this.adminsService.findOne(id);
   }
 
-  @UseGuards(AdminGuards)
+  // @UseGuards(AdminGuards)
   @HttpCode(200)
   @ApiOperation({ summary: 'Update admins by id' })
   @Put(':id')
@@ -55,7 +55,7 @@ export class AdminsController {
     return this.adminsService.update(id, updateAdminsDto);
   }
 
-  @UseGuards(AdminGuards)
+  // @UseGuards(AdminGuards)
   @HttpCode(200)
   @ApiOperation({ summary: 'Delete admins by id' })
   @Delete(':id')

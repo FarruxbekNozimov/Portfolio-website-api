@@ -21,7 +21,7 @@ import { AdminGuards } from '../guards/admin.guards';
 export class SkillTypeController {
   constructor(private readonly skillTypeService: SkillTypeService) {}
 
-  @UseGuards(AdminGuards)
+  // @UseGuards(AdminGuards)
   @HttpCode(200)
   @ApiOperation({ summary: 'Create skillType' })
   @Post()
@@ -29,7 +29,7 @@ export class SkillTypeController {
     return this.skillTypeService.create(createSkillTypeDto);
   }
 
-  @UseGuards(AdminGuards)
+  // @UseGuards(AdminGuards)
   @HttpCode(200)
   @ApiOperation({ summary: 'Find all skillType' })
   @Get()
@@ -37,7 +37,7 @@ export class SkillTypeController {
     return this.skillTypeService.findAll(query);
   }
 
-  @UseGuards(AdminGuards)
+  // @UseGuards(AdminGuards)
   @HttpCode(200)
   @ApiOperation({ summary: 'Get one skillType' })
   @Get(':id')
@@ -45,7 +45,7 @@ export class SkillTypeController {
     return this.skillTypeService.findOne(id);
   }
 
-  @UseGuards(AdminGuards)
+  // @UseGuards(AdminGuards)
   @HttpCode(200)
   @ApiOperation({ summary: 'Update skillType by id' })
   @Put(':id')
@@ -56,7 +56,7 @@ export class SkillTypeController {
     return this.skillTypeService.update(id, updateSkillTypeDto);
   }
 
-  @UseGuards(AdminGuards)
+  // @UseGuards(AdminGuards)
   @HttpCode(200)
   @ApiOperation({ summary: 'Delete skillType by id' })
   @Delete(':id')

@@ -15,6 +15,7 @@ import { SkillTypeModule } from './skill-type/skill-type.module';
 import { SocialsModule } from './socials/socials.module';
 import { AuthModule } from './auth/auth.module';
 import { WorkModule } from './work/work.module';
+import { AboutModule } from './about/about.module';
 
 @Module({
   imports: [
@@ -36,6 +37,7 @@ import { WorkModule } from './work/work.module';
     SkillTypeModule,
     SkillsModule,
     SocialsModule,
+    AboutModule,
     WorkModule,
   ],
   controllers: [],

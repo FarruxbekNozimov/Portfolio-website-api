@@ -6,7 +6,7 @@ import {
   Put,
   Param,
   Delete,
-  // UseGuards,
+  UseGuards,
   Query,
   Req,
 } from '@nestjs/common';
@@ -22,7 +22,7 @@ import { HttpCode } from '@nestjs/common';
 export class CommentsController {
   constructor(private readonly commentsService: CommentsService) {}
 
-  // @UseGuards(JwtAuthGuard)
+  // UseGuards(JwtAuthGuard);
   @HttpCode(200)
   @ApiOperation({ summary: 'Create comments' })
   @Post()
@@ -30,7 +30,7 @@ export class CommentsController {
     return this.commentsService.create(req, createCommentsDto);
   }
 
-  // @UseGuards(JwtAuthGuard)
+  // UseGuards(JwtAuthGuard);
   @HttpCode(200)
   @ApiOperation({ summary: 'Find all comments' })
   @Get()
@@ -42,7 +42,7 @@ export class CommentsController {
     return this.commentsService.findAll(req, query);
   }
 
-  // @UseGuards(JwtAuthGuard)
+  // UseGuards(JwtAuthGuard);
   @HttpCode(200)
   @ApiOperation({ summary: 'Get one comments' })
   @Get(':id')
@@ -50,7 +50,7 @@ export class CommentsController {
     return this.commentsService.findOne(id);
   }
 
-  // @UseGuards(JwtAuthGuard)
+  // UseGuards(JwtAuthGuard);
   @HttpCode(200)
   @ApiOperation({ summary: 'Get comments with post id' })
   @Get('/post/:id')
@@ -58,7 +58,7 @@ export class CommentsController {
     return this.commentsService.findByPostId(id);
   }
 
-  // @UseGuards(JwtAuthGuard)
+  // UseGuards(JwtAuthGuard);
   @HttpCode(200)
   @ApiOperation({ summary: 'Update comments by id' })
   @Put(':id')
@@ -69,7 +69,7 @@ export class CommentsController {
     return this.commentsService.update(id, updateCommentsDto);
   }
 
-  // @UseGuards(JwtAuthGuard)
+  // UseGuards(JwtAuthGuard);
   @HttpCode(200)
   @ApiOperation({ summary: 'Delete comments by id' })
   @Delete(':id')
