@@ -21,7 +21,7 @@ import { HttpCode } from '@nestjs/common';
 export class WorkController {
   constructor(private readonly workService: WorkService) {}
 
-  //  // UseGuards(JwtAuthGuard);
+  // UseGuards(JwtAuthGuard);
   @HttpCode(200)
   @ApiOperation({ summary: 'Create work' })
   @Post()
@@ -29,7 +29,7 @@ export class WorkController {
     return this.workService.create(createWorkDto);
   }
 
-  //  // UseGuards(JwtAuthGuard);
+  // UseGuards(JwtAuthGuard);
   @HttpCode(200)
   @ApiOperation({ summary: 'Find all work' })
   @Get()
@@ -37,7 +37,7 @@ export class WorkController {
     return this.workService.findAll(query);
   }
 
-  //  // UseGuards(JwtAuthGuard);
+  // UseGuards(JwtAuthGuard);
   @HttpCode(200)
   @ApiOperation({ summary: 'Get one work' })
   @Get(':id')
@@ -45,7 +45,7 @@ export class WorkController {
     return this.workService.findOne(id);
   }
 
-  //  // UseGuards(JwtAuthGuard);
+  // UseGuards(JwtAuthGuard);
   @HttpCode(200)
   @ApiOperation({ summary: 'Update work by id' })
   @Put(':id')
@@ -53,7 +53,7 @@ export class WorkController {
     return this.workService.update(id, updateWorkDto);
   }
 
-  //  // UseGuards(JwtAuthGuard);
+  // UseGuards(JwtAuthGuard);
   @HttpCode(200)
   @ApiOperation({ summary: 'Delete work by id' })
   @Delete(':id')
