@@ -1,12 +1,12 @@
 import { ApiProperty } from '@nestjs/swagger';
 
-export class UpdateAcademyDto {
+export class CreateEducationDto {
   @ApiProperty({ example: "Najot Ta'lim" })
-  name?: string;
+  name: string;
 
   @ApiProperty({ example: '2021-2023' })
-  time?: string;
+  time: string;
 
   @ApiProperty({ example: 'NodeJS + VudeJS FullStack' })
-  description?: string;
+  description: string;
 }

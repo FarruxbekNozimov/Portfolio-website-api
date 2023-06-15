@@ -6,7 +6,7 @@ import { join } from 'path';
 import { AdminsModule } from './admins/admins.module';
 import { PostsModule } from './posts/posts.module';
 import { SkillsModule } from './skills/skills.module';
-import { AcademyModule } from './academy/academy.module';
+import { EducationModule } from './academy/education.module';
 import { CommentsModule } from './comments/comments.module';
 import { PostReactionsModule } from './post-reactions/post-reactions.module';
 import { ProjectsModule } from './projects/projects.module';
@@ -14,6 +14,7 @@ import { ReactionsModule } from './reactions/reactions.module';
 import { SkillTypeModule } from './skill-type/skill-type.module';
 import { SocialsModule } from './socials/socials.module';
 import { AuthModule } from './auth/auth.module';
+import { WorkModule } from './work/work.module';
 
 @Module({
   imports: [
@@ -27,7 +28,7 @@ import { AuthModule } from './auth/auth.module';
     AdminsModule,
     PostsModule,
     SkillsModule,
-    AcademyModule,
+    EducationModule,
     CommentsModule,
     ReactionsModule,
     PostReactionsModule,
@@ -35,6 +36,7 @@ import { AuthModule } from './auth/auth.module';
     SkillTypeModule,
     SkillsModule,
     SocialsModule,
+    WorkModule,
   ],
   controllers: [],
   providers: [],

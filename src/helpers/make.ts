@@ -163,15 +163,24 @@ function makeFiles(
 //   token: ['string', ''],
 // });
 
-// ABOUT
-makeFiles('about', 'About', {
-  fullname: ['string', ''],
-  user_photo: ['string', ''],
-  description: ['string', ''],
-  email: ['string', ''],
-  phone: ['string', ''],
-  token: ['string', ''],
-});
+// // EXPERIENCE
+// makeFiles('work', 'Work', {
+//   name: ['string', ''],
+//   address: ['string', ''],
+//   img: ['string', ''],
+//   start_time: ['string', ''],
+//   end_time: ['string', ''],
+// });
+
+// // ABOUT
+// makeFiles('about', 'About', {
+//   fullname: ['string', ''],
+//   user_photo: ['string', ''],
+//   description: ['string', ''],
+//   email: ['string', ''],
+//   phone: ['string', ''],
+//   token: ['string', ''],
+// });
 
 // // USERS
 // makeFiles('users', 'Users', {

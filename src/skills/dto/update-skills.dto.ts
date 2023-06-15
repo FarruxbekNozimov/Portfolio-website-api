@@ -9,7 +9,4 @@ export class UpdateSkillsDto {
 
   @ApiProperty({ example: '647f28c94474a3b986f9c47c' })
   skill_type_id?: string;
-
-  @ApiProperty({ example: '90' })
-  percent?: string;
 }
