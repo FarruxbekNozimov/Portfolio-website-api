@@ -6,8 +6,6 @@ import {
   Put,
   Param,
   Delete,
-  UseGuards,
-  Query,
 } from '@nestjs/common';
 import { PostReactionsService } from './post-reactions.service';
 import { CreatePostReactionsDto } from './dto/create-post-reactions.dto';

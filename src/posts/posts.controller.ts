@@ -6,15 +6,12 @@ import {
   Put,
   Param,
   Delete,
-  UseGuards,
-  Query,
 } from '@nestjs/common';
 import { PostsService } from './posts.service';
 import { CreatePostsDto } from './dto/create-posts.dto';
 import { UpdatePostsDto } from './dto/update-posts.dto';
 import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { HttpCode } from '@nestjs/common';
-import { AdminGuards } from '../guards/admin.guards';
 
 @ApiBearerAuth()
 @ApiTags('Posts')
@@ -22,7 +19,6 @@ import { AdminGuards } from '../guards/admin.guards';
 export class PostsController {
   constructor(private readonly postsService: PostsService) {}
 
-  // @UseGuards(AdminGuards)
   @HttpCode(200)
   @ApiOperation({ summary: 'Create posts' })
   @Post()
@@ -30,7 +26,6 @@ export class PostsController {
     return this.postsService.create(createPostsDto);
   }
 
-  // @UseGuards(AdminGuards)
   @HttpCode(200)
   @ApiOperation({ summary: 'Find all posts' })
   @Get()
@@ -39,7 +34,6 @@ export class PostsController {
     return this.postsService.findAll();
   }
 
-  // @UseGuards(AdminGuards)
   @HttpCode(200)
   @ApiOperation({ summary: 'Get one posts' })
   @Get(':id')
@@ -48,7 +42,6 @@ export class PostsController {
     return this.postsService.findOne(id);
   }
 
-  // @UseGuards(AdminGuards)
   @HttpCode(200)
   @ApiOperation({ summary: 'Update posts by id' })
   @Put(':id')
@@ -56,7 +49,6 @@ export class PostsController {
     return this.postsService.update(id, updatePostsDto);
   }
 
-  // @UseGuards(AdminGuards)
   @HttpCode(200)
   @ApiOperation({ summary: 'Delete posts by id' })
   @Delete(':id')

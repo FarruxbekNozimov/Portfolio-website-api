@@ -6,22 +6,18 @@ import {
   Put,
   Param,
   Delete,
-  UseGuards,
-  Query,
 } from '@nestjs/common';
 import { ProjectsService } from './projects.service';
 import { CreateProjectsDto } from './dto/create-projects.dto';
 import { UpdateProjectsDto } from './dto/update-projects.dto';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { HttpCode } from '@nestjs/common';
-import { AdminGuards } from '../guards/admin.guards';
 
 @ApiTags('Projects')
 @Controller('projects')
 export class ProjectsController {
   constructor(private readonly projectsService: ProjectsService) {}
 
-  // @UseGuards(AdminGuards)
   @HttpCode(200)
   @ApiOperation({ summary: 'Create projects' })
   @Post()
@@ -29,7 +25,6 @@ export class ProjectsController {
     return this.projectsService.create(createProjectsDto);
   }
 
-  // @UseGuards(AdminGuards)
   @HttpCode(200)
   @ApiOperation({ summary: 'Find all projects' })
   @Get()
@@ -37,7 +32,6 @@ export class ProjectsController {
     return this.projectsService.findAll();
   }
 
-  // @UseGuards(AdminGuards)
   @HttpCode(200)
   @ApiOperation({ summary: 'Get one projects' })
   @Get(':id')
@@ -45,7 +39,6 @@ export class ProjectsController {
     return this.projectsService.findOne(id);
   }
 
-  // @UseGuards(AdminGuards)
   @HttpCode(200)
   @ApiOperation({ summary: 'Update projects by id' })
   @Put(':id')
@@ -56,7 +49,6 @@ export class ProjectsController {
     return this.projectsService.update(id, updateProjectsDto);
   }
 
-  // @UseGuards(AdminGuards)
   @HttpCode(200)
   @ApiOperation({ summary: 'Delete projects by id' })
   @Delete(':id')

@@ -6,8 +6,6 @@ import {
   Put,
   Param,
   Delete,
-  UseGuards,
-  Query,
 } from '@nestjs/common';
 import { ExampleService } from './example.service';
 import { CreateExampleDto } from './dto/create-example.dto';

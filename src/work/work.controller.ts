@@ -6,8 +6,6 @@ import {
   Put,
   Param,
   Delete,
-  UseGuards,
-  Query,
 } from '@nestjs/common';
 import { WorkService } from './work.service';
 import { CreateWorkDto } from './dto/create-work.dto';

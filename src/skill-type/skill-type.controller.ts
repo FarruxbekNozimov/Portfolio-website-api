@@ -6,22 +6,18 @@ import {
   Put,
   Param,
   Delete,
-  UseGuards,
-  Query,
 } from '@nestjs/common';
 import { SkillTypeService } from './skill-type.service';
 import { CreateSkillTypeDto } from './dto/create-skill-type.dto';
 import { UpdateSkillTypeDto } from './dto/update-skill-type.dto';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { HttpCode } from '@nestjs/common';
-import { AdminGuards } from '../guards/admin.guards';
 
 @ApiTags('SkillType')
 @Controller('skill-type')
 export class SkillTypeController {
   constructor(private readonly skillTypeService: SkillTypeService) {}
 
-  // @UseGuards(AdminGuards)
   @HttpCode(200)
   @ApiOperation({ summary: 'Create skillType' })
   @Post()
@@ -29,7 +25,6 @@ export class SkillTypeController {
     return this.skillTypeService.create(createSkillTypeDto);
   }
 
-  // @UseGuards(AdminGuards)
   @HttpCode(200)
   @ApiOperation({ summary: 'Find all skillType' })
   @Get()
@@ -37,7 +32,6 @@ export class SkillTypeController {
     return this.skillTypeService.findAll();
   }
 
-  // @UseGuards(AdminGuards)
   @HttpCode(200)
   @ApiOperation({ summary: 'Get one skillType' })
   @Get(':id')
@@ -45,7 +39,6 @@ export class SkillTypeController {
     return this.skillTypeService.findOne(id);
   }
 
-  // @UseGuards(AdminGuards)
   @HttpCode(200)
   @ApiOperation({ summary: 'Update skillType by id' })
   @Put(':id')
@@ -56,7 +49,6 @@ export class SkillTypeController {
     return this.skillTypeService.update(id, updateSkillTypeDto);
   }
 
-  // @UseGuards(AdminGuards)
   @HttpCode(200)
   @ApiOperation({ summary: 'Delete skillType by id' })
   @Delete(':id')
