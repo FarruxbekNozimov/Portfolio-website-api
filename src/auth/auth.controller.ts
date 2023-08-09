@@ -1,17 +1,8 @@
-import {
-  Controller,
-  Post,
-  Body,
-  HttpCode,
-  Res,
-  Param,
-  Get,
-} from '@nestjs/common';
+import { Controller, Post, Body, HttpCode, Res } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { LoginDto } from './dto/login-user.dto';
 import { ApiTags, ApiOperation } from '@nestjs/swagger';
 import { Response } from 'express';
-import { CookieGetter } from '../decorators/cookieGetter.decorator';
 
 @ApiTags('Authentication')
 @Controller()

@@ -13,9 +13,6 @@ export class Admins {
 
   @Prop()
   password: string;
-
-  @Prop()
-  token: string;
 }
 
 export const AdminsSchema = SchemaFactory.createForClass(Admins);

@@ -17,7 +17,7 @@ export class EducationService {
     return res;
   }
 
-  async findAll(query: string) {
+  async findAll() {
     const res = await this.eduModel.find().exec();
     return res;
   }

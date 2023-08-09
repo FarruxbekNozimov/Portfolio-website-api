@@ -33,8 +33,8 @@ export class ExampleController {
   @HttpCode(200)
   @ApiOperation({ summary: 'Find all example' })
   @Get()
-  findAll(@Query() query: any) {
-    return this.exampleService.findAll(query);
+  findAll() {
+    return this.exampleService.findAll();
   }
 
   //  @UseGuards(JwtAuthGuard)

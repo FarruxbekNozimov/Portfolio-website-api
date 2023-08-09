@@ -1,9 +1,4 @@
-import {
-  HttpException,
-  HttpStatus,
-  Injectable,
-  UnauthorizedException,
-} from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
 import { Response } from 'express';
@@ -19,52 +14,25 @@ export class AuthService {
 
   async login(loginDto: LoginDto, res: Response) {
     const { username, password } = loginDto;
-    const admins = await this.adminsService.findOneLogin(username);
-    if (!admins) {
-      throw new HttpException(
-        { msg: `Bunday foydalanuvchi yo'q !!!` },
-        HttpStatus.BAD_REQUEST,
-      );
-    }
-    const isMatchPass = await bcrypt.compare(password, admins.password);
-    if (!isMatchPass) {
-      throw new UnauthorizedException({
-        msg: `Parol yoki Login xato kiritilgan !!!`,
-      });
-    }
-    const tokens = await this.getToken(admins.id, 'ADMIN');
+    const admin = await this.adminsService.findOneLogin(username);
+    if (!admin) throw new BadRequestException("Bunday foydalanuvchi yo'q");
 
-    const hashed_refresh_token = await bcrypt.hash(tokens.refresh_token, 7);
-    const updatedUser = await this.adminsService.update(admins.id, {
-      token: hashed_refresh_token,
-    });
+    const isMatchPass = await bcrypt.compare(password, admin.password);
+    if (!isMatchPass) throw new BadRequestException('Login yoki parol xato');
 
-    res.cookie('token', tokens.refresh_token, {
-      maxAge: 15 * 24 * 60 * 60 * 1000,
-      httpOnly: true,
-    });
+    const { token } = await this.getToken(admin.id, 'ADMIN');
 
-    const response = {
-      status: 200,
-      msg: 'Muvaffaqiyatli kirdingiz',
-      admins: updatedUser,
-      tokens,
-    };
+    const response = { msg: 'Muvaffaqiyatli kirdingiz', admin, token };
     return response;
   }
 
   private async getToken(id: string, role: string) {
     const payload = { id, role };
-    const [accessToken, refreshToken] = await Promise.all([
-      this.jwtService.signAsync(payload, {
-        secret: process.env.REFRESH_TOKEN_KEY,
-        expiresIn: process.env.ACCESS_TOKEN_TIME,
+    return {
+      token: await this.jwtService.signAsync(payload, {
+        secret: process.env.TOKEN_KEY,
+        expiresIn: process.env.TOKEN_TIME,
       }),
-      this.jwtService.signAsync(payload, {
-        secret: process.env.REFRESH_TOKEN_KEY,
-        expiresIn: process.env.REFRESH_TOKEN_TIME,
-      }),
-    ]);
-    return { access_token: accessToken, refresh_token: refreshToken };
+    };
   }
 }

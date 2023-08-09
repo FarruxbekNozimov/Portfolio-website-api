@@ -17,7 +17,7 @@ export class WorkService {
     return res;
   }
 
-  async findAll(query: string) {
+  async findAll() {
     const res = await this.workModel.find().exec();
     return res;
   }

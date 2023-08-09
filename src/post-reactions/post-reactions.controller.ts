@@ -30,8 +30,8 @@ export class PostReactionsController {
   @HttpCode(200)
   @ApiOperation({ summary: 'Find all postReactions' })
   @Get()
-  findAll(@Query() query: any) {
-    return this.postReactionsService.findAll(query);
+  findAll() {
+    return this.postReactionsService.findAll();
   }
 
   @HttpCode(200)

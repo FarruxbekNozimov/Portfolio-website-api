@@ -13,15 +13,12 @@ export class CommentsService {
     private orderModel: Model<CommentsDocument>,
   ) {}
 
-  async create(
-    headers: { 'user-agent': string },
-    createCommentsDto: CreateCommentsDto,
-  ) {
+  async create(createCommentsDto: CreateCommentsDto) {
     const res = await new this.orderModel(createCommentsDto).save();
     return res;
   }
 
-  async findAll(headers: { 'user-agent': string }, query: string) {
+  async findAll() {
     const res = await this.orderModel.find().exec();
     return res;
   }

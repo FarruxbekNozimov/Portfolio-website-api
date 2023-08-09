@@ -33,8 +33,8 @@ export class ReactionsController {
   @HttpCode(200)
   @ApiOperation({ summary: 'Find all reactions' })
   @Get()
-  findAll(@Query() query: any) {
-    return this.reactionsService.findAll(query);
+  findAll() {
+    return this.reactionsService.findAll();
   }
 
   // @UseGuards(AdminGuards)

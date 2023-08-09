@@ -22,7 +22,7 @@ export class AdminsService {
     return res;
   }
 
-  async findAll(query: string) {
+  async findAll() {
     const res = await this.orderModel.find().exec();
     return res;
   }

@@ -17,7 +17,7 @@ export class ExampleService {
     return res;
   }
 
-  async findAll(query: string) {
+  async findAll() {
     const res = await this.exampleModel.find().exec();
     return res;
   }

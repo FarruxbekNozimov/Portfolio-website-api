@@ -33,8 +33,8 @@ export class WorkController {
   @HttpCode(200)
   @ApiOperation({ summary: 'Find all work' })
   @Get()
-  findAll(@Query() query: any) {
-    return this.workService.findAll(query);
+  findAll() {
+    return this.workService.findAll();
   }
 
   // UseGuards(JwtAuthGuard);

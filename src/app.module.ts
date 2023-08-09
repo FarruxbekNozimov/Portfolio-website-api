@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ConfigModule } from '@nestjs/config';
 import { ServeStaticModule } from '@nestjs/serve-static';
-import { join } from 'path';
+import { resolve } from 'path';
 import { AdminsModule } from './admins/admins.module';
 import { PostsModule } from './posts/posts.module';
 import { SkillsModule } from './skills/skills.module';
@@ -16,13 +16,11 @@ import { SocialsModule } from './socials/socials.module';
 import { AuthModule } from './auth/auth.module';
 import { WorkModule } from './work/work.module';
 import { AboutModule } from './about/about.module';
+import { ImageModule } from './image/image.module';
 
 @Module({
   imports: [
-    ServeStaticModule.forRoot({
-      rootPath: join(__dirname, '..', 'swagger-static'),
-      serveRoot: process.env.NODE_ENV === 'development' ? '/' : '/swagger',
-    }),
+    ServeStaticModule.forRoot({ rootPath: resolve(__dirname, 'static') }),
     ConfigModule.forRoot({ envFilePath: '.env', isGlobal: true }),
     MongooseModule.forRoot(process.env.MONGO_URI),
     AuthModule,
@@ -39,6 +37,7 @@ import { AboutModule } from './about/about.module';
     SocialsModule,
     AboutModule,
     WorkModule,
+    ImageModule,
   ],
   controllers: [],
   providers: [],

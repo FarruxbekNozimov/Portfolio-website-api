@@ -33,8 +33,8 @@ export class SkillTypeController {
   @HttpCode(200)
   @ApiOperation({ summary: 'Find all skillType' })
   @Get()
-  findAll(@Query() query: any) {
-    return this.skillTypeService.findAll(query);
+  findAll() {
+    return this.skillTypeService.findAll();
   }
 
   // @UseGuards(AdminGuards)

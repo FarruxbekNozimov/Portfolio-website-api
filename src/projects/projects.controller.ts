@@ -33,8 +33,8 @@ export class ProjectsController {
   @HttpCode(200)
   @ApiOperation({ summary: 'Find all projects' })
   @Get()
-  findAll(@Query() query: any) {
-    return this.projectsService.findAll(query);
+  findAll() {
+    return this.projectsService.findAll();
   }
 
   // @UseGuards(AdminGuards)

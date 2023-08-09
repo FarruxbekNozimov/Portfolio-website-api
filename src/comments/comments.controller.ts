@@ -6,7 +6,6 @@ import {
   Put,
   Param,
   Delete,
-  UseGuards,
   Query,
   Req,
 } from '@nestjs/common';
@@ -14,7 +13,6 @@ import { CommentsService } from './comments.service';
 import { CreateCommentsDto } from './dto/create-comments.dto';
 import { UpdateCommentsDto } from './dto/update-comments.dto';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
-import { JwtAuthGuard } from '../guards/jwt-auth.guards';
 import { HttpCode } from '@nestjs/common';
 
 @ApiTags('Comments')
@@ -22,27 +20,20 @@ import { HttpCode } from '@nestjs/common';
 export class CommentsController {
   constructor(private readonly commentsService: CommentsService) {}
 
-  // UseGuards(JwtAuthGuard);
   @HttpCode(200)
   @ApiOperation({ summary: 'Create comments' })
   @Post()
-  create(@Req() req, @Body() createCommentsDto: CreateCommentsDto) {
-    return this.commentsService.create(req, createCommentsDto);
+  create(@Body() createCommentsDto: CreateCommentsDto) {
+    return this.commentsService.create(createCommentsDto);
   }
 
-  // UseGuards(JwtAuthGuard);
   @HttpCode(200)
   @ApiOperation({ summary: 'Find all comments' })
   @Get()
-  findAll(@Req() req, @Query() query: any) {
-    console.log(req.headers, req.connection, req.connection.remoteAddress);
-    const ipAddress =
-      req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-    console.log(ipAddress);
-    return this.commentsService.findAll(req, query);
+  findAll() {
+    return this.commentsService.findAll();
   }
 
-  // UseGuards(JwtAuthGuard);
   @HttpCode(200)
   @ApiOperation({ summary: 'Get one comments' })
   @Get(':id')
@@ -50,7 +41,6 @@ export class CommentsController {
     return this.commentsService.findOne(id);
   }
 
-  // UseGuards(JwtAuthGuard);
   @HttpCode(200)
   @ApiOperation({ summary: 'Get comments with post id' })
   @Get('/post/:id')
@@ -58,7 +48,6 @@ export class CommentsController {
     return this.commentsService.findByPostId(id);
   }
 
-  // UseGuards(JwtAuthGuard);
   @HttpCode(200)
   @ApiOperation({ summary: 'Update comments by id' })
   @Put(':id')
@@ -69,7 +58,6 @@ export class CommentsController {
     return this.commentsService.update(id, updateCommentsDto);
   }
 
-  // UseGuards(JwtAuthGuard);
   @HttpCode(200)
   @ApiOperation({ summary: 'Delete comments by id' })
   @Delete(':id')
