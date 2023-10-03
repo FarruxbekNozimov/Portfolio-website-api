@@ -25,6 +25,16 @@ import { ImageValidationPipe } from '../pipes/image-validation.pipe';
 export class ImageController {
   constructor(private readonly imageService: ImageService) {}
 
+  @Get()
+  async getAllImageNames(@Res() res: Response) {
+    try {
+      const imageNames = await this.imageService.findAll();
+      return res.json(imageNames);
+    } catch (error) {
+      return res.status(500).json({ message: 'Failed to fetch image names' });
+    }
+  }
+
   @ApiOperation({ summary: 'Create new image' })
   @ApiResponse({ status: 200 })
   @ApiConsumes('multipart/form-data')

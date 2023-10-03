@@ -35,6 +35,12 @@ export class ImageService {
     }
   }
 
+  async findAll() {
+    const [files] = await bucket.getFiles();
+    const allUniqueFileNames = files.map((file) => file.name);
+    return allUniqueFileNames;
+  }
+
   async findOne(fileName: string, res: Response) {
     const file = bucket.file(fileName);
     const exists = await file.exists();
