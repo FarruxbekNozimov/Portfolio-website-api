@@ -25,8 +25,9 @@ import { ImageValidationPipe } from '../pipes/image-validation.pipe';
 export class ImageController {
   constructor(private readonly imageService: ImageService) {}
 
+  @ApiOperation({ summary: 'Get all images' })
   @Get()
-  async getAllImageNames(@Res() res: Response) {
+  async findAll(@Res() res: Response) {
     try {
       const imageNames = await this.imageService.findAll();
       return res.json(imageNames);
